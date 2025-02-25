@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { fetchUpcomingMovies, IMAGE_BASE_URL } from "./Api/Api";
 import { useNavigate } from "react-router-dom";
-import "./ItemCard.css";
+import "./styles/ItemCard.css";
 
 const UpcomingMovies = () => {
     const [upcoming, setUpcomingMovies] = useState([]);
@@ -61,7 +61,7 @@ const UpcomingMovies = () => {
                         />
                         </div>
                         <div className="flip-card-back">
-                        <h3>{upcomings.title} ({new Date(upcomings.release_date).getFullYear()})</h3>
+                        <h3 className="title">{upcomings.title} ({new Date(upcomings.release_date).getFullYear()})</h3>
                         <p>⭐ {upcomings.vote_average.toFixed(1)}</p>
                         <button className="button1" onClick={() => goToMovieDetail(upcomings.id)}>View Details</button>
                         </div>

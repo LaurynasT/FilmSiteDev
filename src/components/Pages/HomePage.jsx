@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Homepage.css";
+import "../styles/Homepage.css";
 import PopularTvSeries from "../PopularTvSeries";
 import Upcoming from "../Upcoming";
 import PopularMovies from "../PopularMovies";

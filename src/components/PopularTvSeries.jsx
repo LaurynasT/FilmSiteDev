@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { fetchPopularTvSeries, IMAGE_BASE_URL } from "./Api/Api";
 import { useNavigate } from "react-router-dom";
-import "./ItemCard.css";
+import "./styles/ItemCard.css";
 
 const PopularTvSeries = () => {
     const [tvseries, setTvSeries] = useState([]);
@@ -62,7 +62,7 @@ const PopularTvSeries = () => {
                                 </div>
 
                                 <div className="flip-card-back">
-                                    <h3>{tv.name}</h3>
+                                    <h3 className="title">{tv.name}</h3>
                                     <p>⭐ {tv.vote_average.toFixed(1)}</p>
                                     <button className="button1" onClick={() => goToTvSeriesDetail(tv.id)}>View Details</button>
                                 </div>

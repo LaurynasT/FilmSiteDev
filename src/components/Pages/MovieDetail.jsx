@@ -1,7 +1,7 @@
 import { fetchMovieDetail, fetchMovieTrailer, fetchMovieCredits, IMAGE_BASE_URL } from "../Api/Api.jsx"; 
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
-import "./Moviedetail.css";
+import "../styles/Moviedetail.css";
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -106,8 +106,8 @@ const MovieDetail = () => {
 
             <div className="cast-section">
                 <h2 className="h2">Cast</h2>
+                <div className="cast-scroll-wrapper">
                 <button className="scroll-button left" onClick={scrollLeft}>&#10094;</button>
-
                 <div className="cast-scroll-container" ref={scrollRef}>
                     {credits.cast.map((cast) => (
                         <div key={cast.id} className="cast-card">
@@ -123,6 +123,7 @@ const MovieDetail = () => {
                 </div>
 
                 <button className="scroll-button right" onClick={scrollRight}>&#10095;</button>
+                </div>
             </div>
         </div>
     );

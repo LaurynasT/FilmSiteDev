@@ -107,9 +107,9 @@ export const fetchTvSeriesCredits = async (id) => {
     }
 };
 
-export const fetchTvSeasons = async (id) => {
+export const fetchTvSeasons = async (id, seasonNumber) => {
     try{
-        const response = await axios.get(`${BASE_URL}/tv/${id}/season/1`, {
+        const response = await axios.get(`${BASE_URL}/tv/${id}/season/${seasonNumber}`, {
             params: { api_key: TMDB_API_KEY, language: "en-US"},
 
         });
