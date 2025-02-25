@@ -4,28 +4,22 @@
     font-size: 30px;
 }
 
-.background
-{
-    background-image: linear-gradient(rgb(4, 68, 245), rgb(25, 133, 255));
-    
-}
 
-.tvDetail {
+.moviedetail {
     padding-top: 50px;
     color: #ffffff;
     background: #fffefeb9;
-    margin: 0;  
-    font-family: sans-serif; 
+    margin: 0;   
 }
-.tvDetail-container{
+.moviedetail-container{
     padding-top: 20px;
     padding-left: 20px;
     display: flex;
     gap: 20px;
-   
+    
     
 }
-.tvDetail-img {
+.moviedetail-img {
     width: 100%;
     max-width: 300px;
     border-radius: 10px;
@@ -38,29 +32,29 @@
     height: 497px;
 }
 
-.tvDetail-container2 {
+.moviedetail-container2 {
     display: flex;
     gap: 10px;
-    
+   
 }
 
-.tvDetail-container2 p {
+.moviedetail-container2 p {
     text-align: center;
     justify-content: center;
     align-items: center;
     align-self: center;
     align-content: center;
 }
-.tvDetail-container2 h2{
+.moviedetail-container2 h2{
 padding-left: 20px;
 }
 
-.tvDetail-genres {
+.moviedetail-genres {
     padding-top: 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    
+   
     padding-left: 20px;
 }
 
@@ -76,20 +70,20 @@ padding-left: 20px;
     text-align: center;
 }
 
-.tvDetail-container3{
+.moviedetail-container3{
     display:flex;
     flex-direction: column; 
     align-items: center;
     color: black;
     
 }
-.tvDetail-container3 p {
+.moviedetail-container3 p {
     border-bottom: 1px solid rgb(0, 0, 0);
     gap: 10px;
     padding-bottom:10px ;
     width: 50%;
 } 
-.tvDetail-container3-home{
+.moviedetail-container3-home{
     border-bottom: 1px solid rgb(0, 0, 0);
     gap: 10px;
     padding-bottom:10px ;
@@ -102,20 +96,24 @@ padding-left: 20px;
 .cast-section {
     position: relative;
     text-align: center;
+    margin-top: 30px;
 }
 
+.cast-scroll-wrapper {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .cast-scroll-container {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
     gap: 15px;
-    margin-top: 10px;
     padding: 10px 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
-   
-    
 }
 
 .cast-scroll-container::-webkit-scrollbar {
@@ -127,7 +125,6 @@ padding-left: 20px;
     min-width: 120px;
     text-align: center;
     flex: 0 0 auto;
-    
 }
 
 
@@ -164,15 +161,15 @@ padding-left: 20px;
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
-    border-radius: 10%;
+    border-radius: 50%;
 }
 
 
-.scroll-button.cast-left {
+.scroll-button.left {
     left: 0;
 }
 
-.scroll-button.cast-right {
+.scroll-button.right {
     right: 0;
 }
 
@@ -182,102 +179,31 @@ padding-left: 20px;
 }
 
 
-
-.seasons {
-    color: black;
-    font-family: sans-serif;
-    
-}
-.seasons h2{
-    text-align: left;
-    padding-left: 20px;
-}
-
-.seasons-scroll-wrapper {
-    position: relative; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.seasons-scroll-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    gap: 10px;
-    width: 95%; 
-    padding: 10px 0;
-    white-space: nowrap;
-}
-
-.seasons-scroll-container::-webkit-scrollbar {
-    display: none;
-}
-
-.seasons-card {
-    text-align: center;
-    flex: 0 0 auto;
-    width: 150px; 
-}
-
-.seasons-card img {
-    width: 100%;
-    border-radius: 10px;
-}
-.seasons-card p {
-    max-width: 100px; 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-    display: block;
-    font-size: 12px;
-}
-
-
-
-
-.scroll-button.seasons-left {
-    left: 10px;
-}
-
-.scroll-button.seasons-right {
-    right: 10px;
-}
-
-.scroll-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-
-   
 @media (max-width: 480px) {
-    .tvDetail {
+    .moviedetail {
         padding-top: 50px;
         text-align: center;
         
     }
 
-    .tvDetail-body {
+    .moviedetail-body {
         flex-direction: column;
         align-items: center;
         gap: 10px;
     }
 
-    .tvDetail-img {
+    .moviedetail-img {
         width: 100px; 
         height: auto;
         border-radius: 8px;
     }
 
-    .tvDetail h2 {
+    .moviedetail h2 {
         font-size: 14px;
         margin-top: 5px;
     }
 
-    .tvDetail-container2 p {
+    .moviedetail-container2 p {
         font-size: 12px;
         line-height: 1.4;
         margin: 5px 0;
@@ -285,7 +211,7 @@ padding-left: 20px;
         text-align: center;
     }
 
-    .tvDetail-container3 p{
+    .moviedetail-container3 p{
         text-align: center;
         align-items: center;
         justify-content: center;
