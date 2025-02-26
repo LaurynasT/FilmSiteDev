@@ -6,8 +6,8 @@
 
 .background
 {
-    background-image: linear-gradient(rgb(4, 68, 245), rgb(25, 133, 255));
-    
+    background: linear-gradient(rgb(4, 68, 245), rgb(25, 133, 255));
+   
 }
 
 .tvDetail {

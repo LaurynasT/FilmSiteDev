@@ -16,7 +16,7 @@
     padding-left: 20px;
     display: flex;
     gap: 20px;
-    
+    justify-content: left;
     
 }
 .moviedetail-img {
@@ -26,7 +26,7 @@
     height: 500px;
 }
 
-.trailer-container iframe {
+.movie-trailer-container iframe {
     border-radius: 10px;
     width: 300%;
     height: 497px;
@@ -54,11 +54,10 @@ padding-left: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-   
     padding-left: 20px;
 }
 
-.genre-badge {
+.movie-genre-badge {
     display: inline-block;
     padding: 5px 12px;
     border: 1px solid #fff; 
@@ -217,8 +216,8 @@ padding-left: 20px;
         justify-content: center;
     }
 
-    .trailer-container iframe {
-        width: 75%;
+    .movie-trailer-container iframe {
+        width: 95%;
         height: 200px;
         border-radius: 8px;
     }

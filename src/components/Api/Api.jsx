@@ -138,6 +138,42 @@ export const fetchTvTrailer = async (id) => {
     }
 };
 
+export const fetchCompanyDetail = async (companyId) => {
+    try{
+        const response = await axios.get(`${BASE_URL}/company/${companyId}`, {
+            params: {api_key: TMDB_API_KEY, language: "en-US"},
+        });
+        return response.data;
+    } catch (error){
+        console.error("Failed to fetch company details",error)
+        throw error;
+    }
+} 
+
+export const fetchSimilar = async (id) => {
+    try{
+        const response = await axios.get(`${BASE_URL}/movie/${id}/similar`, {
+            params: {api_key: TMDB_API_KEY, language: "en-US"},
+        });
+        return response.data.results;
+    } catch (error){
+        console.error("Failed to fetch similar movies",error)
+        throw error;
+    }
+}
+
+export const fetchMovieReviews = async (id) => {
+    try{
+        const response = await axios.get(`${BASE_URL}/movie/${id}/reviews`, {
+            params: {api_key: TMDB_API_KEY, language: "en-US"},
+        });
+        return response.data.results;
+    } catch (error){
+        console.error("Failed to fetch similar movies",error)
+        throw error;
+    }
+}
+
 
 export { IMAGE_BASE_URL };
 
