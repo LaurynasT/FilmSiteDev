@@ -26,7 +26,7 @@ export const NavBar = () => {
                     <NavLink to="/">AI Search</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/">LOL</NavLink>
+                    <NavLink to="/"></NavLink>
                 </li>
             </ul>
         </nav>

@@ -4,7 +4,7 @@ import MovieDetail from "../Pages/MovieDetail.jsx";
 import TvSeriesDetais from "../Pages/TvSeriesDetail.jsx";
 import CompanyDetail from "../Pages/CompanyDetail.jsx";
 import { NavBar } from "../NavBar/NavBar.jsx";
-import ScrollUp from "../assets/ScrollUp.jsx";
+import ScrollUp from "../assets/Scroll.jsx";
 
 function App() {
   return (

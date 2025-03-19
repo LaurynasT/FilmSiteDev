@@ -13,3 +13,12 @@
     border-radius: 50px; 
     font-size: 18px; 
   }
+
+.scroll-button.left {
+    left: 10px;
+}
+
+.scroll-button.right {
+  right: 10px;
+  
+}

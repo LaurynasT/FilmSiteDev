@@ -49,6 +49,7 @@ const CompanyDetails = () => {
                             {company.desciption},
                             {company.homepage}</span>
                     </div>
+                    
                 </div>
             </div>
         </div>

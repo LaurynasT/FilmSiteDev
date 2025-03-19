@@ -2,9 +2,9 @@ import { fetchMovieDetail, fetchMovieTrailer, fetchMovieCredits, fetchSimilar, f
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-
 import 'react-circular-progressbar/dist/styles.css';
 import "../styles/Moviedetail.css";
+import {ScrollLeft, ScrollRight} from "../assets/Scroll.jsx";
 
 
 const MovieDetail = () => {
@@ -55,13 +55,6 @@ const MovieDetail = () => {
     const navigate = useNavigate();
     const goToCompanyDetail = (companyId) => {
         navigate(`/CompanyDetail/${companyId}`);
-    };
-    const scrollLeft = () => {
-        scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    };
-
-    const scrollRight = () => {
-        scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
     };
 
     if (loading) return <p>Loading movie details...</p>;
@@ -153,7 +146,7 @@ const MovieDetail = () => {
             <div className="cast-section">
                 <h2 className="h2">Cast</h2>
                 <div className="cast-scroll-wrapper">
-                    <button className="scroll-button left" onClick={scrollLeft}>&#10094;</button>
+                    <ScrollLeft scrollRef={scrollRef}/>
                     <div className="cast-scroll-container" ref={scrollRef}>
                         {credits.cast.map((cast) => (
                             <div key={cast.id} className="cast-card">
@@ -168,7 +161,7 @@ const MovieDetail = () => {
                         ))}
                     </div>
 
-                    <button className="scroll-button right" onClick={scrollRight}>&#10095;</button>
+                   <ScrollRight scrollRef={scrollRef} />
                 </div>
             </div>
             <div>
