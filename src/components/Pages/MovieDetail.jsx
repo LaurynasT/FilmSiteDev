@@ -17,6 +17,7 @@ const MovieDetail = () => {
     const [similar, setSimilar] = useState([]);
     const [reviews, setReviews] = useState([]);
     const scrollRef = useRef(null);
+    const similarScrollRef = useRef(null);
 
     useEffect(() => {
         const loadMovieData = async () => {
@@ -164,22 +165,29 @@ const MovieDetail = () => {
                    <ScrollRight scrollRef={scrollRef} />
                 </div>
             </div>
-            <div>
+            <div className="cast-section">
             <h2 style={{color: "black"}}>Similar Movies</h2>
+            <div className="cast-scroll-wrapper">
+            <ScrollLeft scrollRef={scrollRef}/>
+            <div className="cast-scroll-container" ref={similarScrollRef}>
                 {similar.map((similars) => (
-                    <div key={similars.id}>
+                    <div className="cast-card" key={similars.id}>
                         
                          <img
                                     src={similars.poster_path ? `${IMAGE_BASE_URL}${similars.poster_path}` : "https://via.placeholder.com/120"}
                                     alt={similars.title}
+                                    
                                     
                                 />
                         <p style={{color: "black"}}>{similars.title}</p>
                     </div>
                 ))}
             </div>
+            <ScrollRight scrollRef={similarScrollRef} />
+            </div>
+            </div>
             <div>
-            <h2 style={{color: "black"}}>Similar Movies</h2>
+            <h2 style={{color: "black"}}>Comments</h2>
                 {reviews.map((review) => (
                     <div key={review.id}>
                         <p style={{color: "black"}}><strong>Name: </strong>{review.author}</p>

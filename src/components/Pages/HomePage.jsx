@@ -27,32 +27,6 @@ const HomePage = () => {
                 {selectedCategory === "tvSeries" && <PopularTvSeries />}
                 {selectedCategory === "upcoming" && <Upcoming />}
             </div>
-
-            <a href="https://ainera.com" target="_blank">
-            <video loop autoPlay={true} muted >
-                <source src="Baneris 1 dekstop.mp4" type="video/mp4" />
-            </video>
-            </a>
-            <video loop autoPlay={true} muted>
-                <source src="Baneris 2 dekstop.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <video loop autoPlay={true} muted>
-                <source src="Baneris 3 dekstop.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <video loop autoPlay={true} muted>
-                <source src="Baneris 1 mobile.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <video loop autoPlay={true} muted>
-                <source src="Baneris 2 mobile.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <video loop autoPlay={true} muted>
-                <source src="baneris 3 mobile.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
         </div>
     );
 };
