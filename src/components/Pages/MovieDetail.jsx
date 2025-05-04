@@ -4,8 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import "../styles/Moviedetail.css";
-import {ScrollLeft, ScrollRight} from "../assets/Scroll.jsx";
-
+import { ScrollLeft, ScrollRight } from "../assets/Scroll.jsx";
+import FavoriteButton from "../assets/FavoriteButton.jsx";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import WatchListButton from "../assets/WatchListButton.jsx";
+import { useAuth } from '../assets/AuthContext'; // Import the AuthContext hook
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -18,6 +22,8 @@ const MovieDetail = () => {
     const [reviews, setReviews] = useState([]);
     const scrollRef = useRef(null);
     const similarScrollRef = useRef(null);
+    const navigate = useNavigate();
+    const { isAuthenticated } = useAuth(); // Use the auth context instead of checking localStorage
 
     useEffect(() => {
         const loadMovieData = async () => {
@@ -29,7 +35,6 @@ const MovieDetail = () => {
                     fetchMovieCredits(id),
                     fetchSimilar(id),
                     fetchMovieReviews(id),
-                    
                 ]);
 
                 setMovieDetail(movieData);
@@ -47,20 +52,37 @@ const MovieDetail = () => {
         loadMovieData();
     }, [id]);
 
-    
-    
-    const stripHtml = (html) => {
-        return html.replace(/<[^>]*>/g, ''); 
+    const handleToggleFavorite = (isFavorite) => {
+        if (!isAuthenticated) {
+            toast('Need to be logged in', { type: 'error' });
+            return;
+        } else {
+        toast(
+            `Movie ${isFavorite ? 'added to' : 'removed from'} favorites`,
+            { type: isFavorite ? 'success' : 'info' }
+        );
+    }
     };
-    
-    const navigate = useNavigate();
+
+    const handleNavigateToActor = id => {
+        navigate(`/ActorDetail/${id}`);
+    }
+
+    const handleNavigateToDetail = (id) => {
+        navigate(`/MovieDetail/${id}`);
+    };
+
+    const stripHtml = (html) => {
+        return html.replace(/<[^>]*>/g, '');
+    };
+
     const goToCompanyDetail = (companyId) => {
         navigate(`/CompanyDetail/${companyId}`);
     };
 
     if (loading) return <p>Loading movie details...</p>;
     if (error) return <p>{error}</p>;
-    if (!movieDetail) return <p style={{marginTop: "60px"}}>No movie data found.</p>;
+    if (!movieDetail) return <p style={{ marginTop: "60px" }}>No movie data found.</p>;
 
     const rating = movieDetail.vote_average * 10;
 
@@ -96,16 +118,36 @@ const MovieDetail = () => {
                         <h2>{movieDetail.title} ({movieDetail.release_date?.split("-")[0]})</h2>
                         <p>{movieDetail.runtime} minutes</p>
                         <p>Rating: {movieDetail.vote_average.toFixed(1)}/10</p>
-                        <div style={{ width: 50, height: 50, margin: "10px"}}>
-                        <CircularProgressbar 
-                        value={rating}
-                        text={`${rating}%`}
-                        styles={buildStyles({
-                            textColor: "white",
-                            pathColor: rating > 70 ? "green" : rating > 40 ? "orange" : "red",
-                            trailColor: "#d6d6d6"
-                        })}
-                        />
+
+                        <div style={{ width: 50, height: 50, margin: "10px" }}>
+                            <CircularProgressbar
+                                value={rating}
+                                text={`${rating}%`}
+                                styles={buildStyles({
+                                    textColor: "white",
+                                    pathColor: rating > 70 ? "green" : rating > 40 ? "orange" : "red",
+                                    trailColor: "#d6d6d6"
+                                })}
+                            />
+                        </div>
+                        <div style={{ marginTop: 15 }}>
+                            <FavoriteButton
+                                mediaId={movieDetail.id}
+                                mediaType="movie"
+                                title={movieDetail.title}
+                                posterPath={movieDetail.poster_path}
+                                onToggle={handleToggleFavorite}
+                            />
+                            <ToastContainer position="bottom-center" autoClose={3000} hideProgressBar={false} />
+                        </div>
+                        <div style={{ marginTop: 17 }}>
+                            <WatchListButton
+                                mediaId={movieDetail.id}
+                                mediaType="movie"
+                                title={movieDetail.title}
+                                posterPath={movieDetail.poster_path}
+                                onToggle={(isAdded) => console.log(isAdded ? 'Added to watchlist' : 'Removed from watchlist')}
+                            />
                         </div>
                     </div>
                 </div>
@@ -117,7 +159,7 @@ const MovieDetail = () => {
                             <span
                                 key={company.id}
                                 onClick={() => goToCompanyDetail(company.id)}
-                                style={{ cursor: 'pointer', color: 'blue' }} 
+                                style={{ cursor: 'pointer', color: 'blue' }}
                             >
                                 {company.name}
                                 {index < movieDetail.production_companies.length - 1 && ", "}
@@ -147,10 +189,10 @@ const MovieDetail = () => {
             <div className="cast-section">
                 <h2 className="h2">Cast</h2>
                 <div className="cast-scroll-wrapper">
-                    <ScrollLeft scrollRef={scrollRef}/>
+                    <ScrollLeft scrollRef={scrollRef} />
                     <div className="cast-scroll-container" ref={scrollRef}>
                         {credits.cast.map((cast) => (
-                            <div key={cast.id} className="cast-card">
+                            <div key={cast.id} className="cast-card" onClick={() => handleNavigateToActor(cast.id)}>
                                 <img
                                     src={cast.profile_path ? `${IMAGE_BASE_URL}${cast.profile_path}` : "https://via.placeholder.com/120"}
                                     alt={cast.name}
@@ -162,40 +204,37 @@ const MovieDetail = () => {
                         ))}
                     </div>
 
-                   <ScrollRight scrollRef={scrollRef} />
+                    <ScrollRight scrollRef={scrollRef} />
                 </div>
             </div>
-            <div className="cast-section">
-            <h2 style={{color: "black"}}>Similar Movies</h2>
-            <div className="cast-scroll-wrapper">
-            <ScrollLeft scrollRef={scrollRef}/>
-            <div className="cast-scroll-container" ref={similarScrollRef}>
-                {similar.map((similars) => (
-                    <div className="cast-card" key={similars.id}>
-                        
-                         <img
+            <div className="similar-section">
+                <h2 style={{ color: "black" }}>Similar Movies</h2>
+                <div className="similar-scroll-wrapper">
+                    <ScrollLeft scrollRef={similarScrollRef} />
+                    <div className="similar-scroll-container" ref={similarScrollRef}>
+                        {similar.map((similars) => (
+                            <div className="similar-card" key={similars.id} onClick={() => handleNavigateToDetail(similars.id)}>
+                                <img
                                     src={similars.poster_path ? `${IMAGE_BASE_URL}${similars.poster_path}` : "https://via.placeholder.com/120"}
                                     alt={similars.title}
-                                    
-                                    
+                                    className="similar-image"
                                 />
-                        <p style={{color: "black"}}>{similars.title}</p>
+                                <p style={{ color: "black" }}>{similars.title}</p>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                    <ScrollRight scrollRef={similarScrollRef} />
+                </div>
             </div>
-            <ScrollRight scrollRef={similarScrollRef} />
-            </div>
-            </div>
-            <div>
-            <h2 style={{color: "black"}}>Comments</h2>
+            <div className="comments-container">
+                <h2>Comments</h2>
                 {reviews.map((review) => (
-                    <div key={review.id}>
-                        <p style={{color: "black"}}><strong>Name: </strong>{review.author}</p>
-                        <p style={{color: "black"}}>{stripHtml(review.content)}</p>
+                    <div key={review.id} className="comments-section">
+                        <p style={{ color: "black" }}><strong>Name: </strong>{review.author}</p>
+                        <p style={{ color: "black" }}>{stripHtml(review.content)}</p>
                     </div>
                 ))}
             </div>
-            
         </div>
     );
 };

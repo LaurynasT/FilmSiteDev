@@ -1,0 +1,68 @@
+/* CompactFavoriteButton.css */
+.compact-favorite-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    position: relative;
+  }
+  
+  .compact-favorite-button svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .compact-favorite-button:hover svg {
+    transform: scale(1.1);
+  }
+  
+  .compact-favorite-button.favorite {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+  }
+  
+  .compact-favorite-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .compact-favorite-button.favorite:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+  }
+  
+  /* Loading spinner */
+  .compact-favorite-button .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .compact-favorite-button.loading {
+    opacity: 0.7;
+    cursor: wait;
+  }
+  
+  /* For better visibility against light backgrounds */
+  .light-background .compact-favorite-button:not(.favorite) {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #333;
+  }

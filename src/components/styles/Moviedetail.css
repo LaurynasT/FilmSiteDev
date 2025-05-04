@@ -96,6 +96,7 @@ padding-left: 20px;
     position: relative;
     text-align: center;
     margin-top: 30px;
+    pointer-events: auto;
 }
 
 .cast-scroll-wrapper {
@@ -124,6 +125,8 @@ padding-left: 20px;
     min-width: 120px;
     text-align: center;
     flex: 0 0 auto;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 
@@ -133,6 +136,7 @@ padding-left: 20px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid rgb(0, 0, 0);
+    pointer-events: auto;
 }
 
 .cast-name {
@@ -176,6 +180,74 @@ padding-left: 20px;
 .scroll-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+.similar-section{
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+}
+.similar-scroll-wrapper {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.similar-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 15px;
+    padding: 10px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    pointer-events: auto;
+}
+
+.similar-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+.similar-card {
+    min-width: 120px;
+    text-align: center;
+    flex: 0 0 auto;
+    cursor: pointer;
+    pointer-events: auto;
+    margin-left: 15px;
+}
+
+
+.similar-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    
+}
+.similar-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: black;
+}
+
+.comments-container{
+    color:black;
+    
+}
+.comments-container h2{
+    margin-left: 15px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+.comments-section{
+    border-color: black;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    width: 70%;
+    margin-left: 15px;
+    
+}
+
 
 
 @media (max-width: 480px) {

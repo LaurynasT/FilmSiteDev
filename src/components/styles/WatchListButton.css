@@ -1,0 +1,56 @@
+/* WatchListButton.css */
+.compact-watchlist-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .compact-watchlist-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+  }
+  
+  .compact-watchlist-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .compact-watchlist-button.in-watchlist {
+    color: #4CAF50;
+  }
+  
+  .compact-watchlist-button .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: watchlist-spin 1s linear infinite;
+  }
+  
+  @keyframes watchlist-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .compact-watchlist-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+  }
+  
+  .compact-watchlist-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }

@@ -1,0 +1,180 @@
+
+.swiper-container {
+  position: relative;
+}
+
+.spotlight-slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 400px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.spotlight-content {
+  position: absolute;
+  color: white;
+  z-index: 2;
+  text-align: left;
+  padding: 20px;
+  max-width: 100%;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.spotlight-thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.thumbnail-image {
+  width: 225px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.spotlight-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.spotlight-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.spotlight-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  max-width: 100%; 
+}
+
+.swipercategory {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.swipercategory-buttons {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2px;
+  border-radius: 25px;
+  margin-left: 13px;
+  gap: 5px;
+}
+
+.swipercategory-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.swipercategory-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.swipercategory-buttons .active {
+  background-image: linear-gradient(rgb(4, 68, 245), rgb(25, 133, 255));
+  color: rgb(255, 255, 255);
+}
+
+
+.button1 {
+  background-color: #2d5eff;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 2px 3px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .spotlight-slide {
+    height: 300px;
+  }
+  
+  .spotlight-content {
+    flex-direction: column;
+    align-items: flex-start;
+    bottom: 10px;
+    padding: 15px;
+  }
+  
+  .spotlight-thumbnail {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .thumbnail-image {
+    width: 150px;
+  }
+  
+  .spotlight-info {
+    max-width: 100%;
+  }
+  
+  .spotlight-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .spotlight-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .swipercategory {
+    justify-content: center;
+  }
+  
+  .swipercategory-buttons {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2px 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: auto; 
+    margin: 0 auto; 
+    gap: 5px;
+  }
+  
+  .swipercategory-buttons button {
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}

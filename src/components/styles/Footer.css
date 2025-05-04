@@ -1,0 +1,76 @@
+/* Footer Styles */
+.footer {
+  margin-top: auto; /* This pushes the footer to the bottom */
+  background-color: #111;
+  color: #ccc;
+  padding: 40px 20px 20px;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px 0;
+}
+
+.footer-section h3 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-section p {
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 8px;
+}
+
+.footer-section a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 15px;
+  color: #ccc;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  margin-top: 30px;
+  font-size: 13px;
+}
+
+/* Mobile Styles for Footer */
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 30px 15px 15px;
+  }
+  
+  .footer-section {
+    min-width: 100%;
+    margin: 15px 0;
+  }
+}

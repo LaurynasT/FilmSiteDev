@@ -3,13 +3,23 @@ import "../styles/Homepage.css";
 import PopularTvSeries from "../PopularTvSeries";
 import Upcoming from "../Upcoming";
 import PopularMovies from "../PopularMovies";
+import Search from "../assets/Search";
+import TrendingSwiper from "../assets/TrendingSwiper";
 
 const HomePage = () => {
     const [selectedCategory, setSelectedCategory] = useState("movies");
 
     return (
         <div className="homepage">
+            <div>
+                <Search />
+            </div>
+
+            <div>
+                <TrendingSwiper/>
+            </div>
             <div className="category">
+
                 <div className="category-buttons">
                     <button onClick={() => setSelectedCategory("movies")} className={selectedCategory === "movies" ? "active" : ""}>
                         Popular Movies

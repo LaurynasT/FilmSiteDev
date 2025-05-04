@@ -9,14 +9,25 @@ const PopularMovies = () => {
     const [error, setError] = useState(null);
     const scrollRef = useRef(null);
 
+    
     useEffect(() => {
         const loadPopularMovies = async () => {
             setLoading(true);
             try {
-                const [popularMovies] = await Promise.all([
-                    fetchPopularMovies(),
-                ])
+                const [popularMovies] = await Promise.all([fetchPopularMovies()]);
                 setMovies(popularMovies);
+
+               
+                const lcpImage = popularMovies[0]?.poster_path;
+                if (lcpImage) {
+                    
+                    const preloadLink = document.createElement('link');
+                    preloadLink.rel = 'preload';
+                    preloadLink.href = `${IMAGE_BASE_URL}${lcpImage}`;
+                    preloadLink.as = 'image';
+                    preloadLink.type = 'image/jpeg'; 
+                    document.head.appendChild(preloadLink);
+                }
             } catch (err) {
                 setError("Failed to fetch movies");
             } finally {
@@ -40,6 +51,7 @@ const PopularMovies = () => {
         scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
     };
 
+  
     if (loading) return <p>Loading movies...</p>;
     if (error) return <p>{error}</p>;
 
@@ -52,6 +64,7 @@ const PopularMovies = () => {
                         <div key={movie.id} className="flip-card">
                             <div className="flip-card-inner">
                                 <div className="flip-card-front">
+                                   
                                     <img
                                         src={`${IMAGE_BASE_URL}${movie.poster_path}`}
                                         alt={movie.title}

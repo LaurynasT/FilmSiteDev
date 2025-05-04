@@ -1,0 +1,141 @@
+import React, { useState, useEffect } from 'react';
+import { fetchDiscoverMovie } from '../Api/Api';
+import { fetchGenres } from '../Api/Api';
+import { useNavigate } from 'react-router-dom';
+import '../styles/DiscoverMovie.css';
+
+const DiscoverMoviesPage = () => {
+  const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [releaseYear, setReleaseYear] = useState('');
+  const [sortBy, setSortBy] = useState('popularity.desc');
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch genres when the page loads
+    const loadGenres = async () => {
+      const genresData = await fetchGenres();
+      setGenres(genresData);
+    };
+    loadGenres();
+  }, []);
+
+  useEffect(() => {
+    // Fetch discover movies whenever filters change
+    const loadMovies = async () => {
+      setLoading(true);
+      const movieData = await fetchDiscoverMovie({
+        page,
+        sortBy,
+        genres: selectedGenres.join(','), // Pass multiple genres as a comma-separated string
+        releaseYear,
+      });
+      setMovies(movieData);
+      setLoading(false);
+    };
+    loadMovies();
+  }, [page, selectedGenres, releaseYear, sortBy]);
+
+  // Handle adding/removing genres
+  const toggleGenre = (genreId) => {
+    setSelectedGenres((prevGenres) =>
+      prevGenres.includes(genreId)
+        ? prevGenres.filter((id) => id !== genreId)  // Remove if already selected
+        : [...prevGenres, genreId]                   // Add if not selected
+    );
+  };
+  const handleNavigateToDetail = (id) => {
+    
+      navigate(`/MovieDetail/${id}`);
+    
+  };
+
+  return (
+    <div className="discover-movies-page">
+  <h2>Discover Movies</h2>
+
+  <div className="content-container">
+    <div className="sidebar">
+    <input
+        type="number"
+        placeholder="Release Year"
+        value={releaseYear}
+        onChange={(e) => setReleaseYear(e.target.value)}
+      />
+
+      <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+        <option value="popularity.desc">Most Popular</option>
+        <option value="vote_average.desc">Top Rated</option>
+        <option value="release_date.desc">Newest</option>
+      </select>
+
+      <div className="genre-filter">
+        <h3>Genres</h3>
+        <div className="genre-options">
+          {genres.map((genre) => (
+            <button
+              key={genre.id}
+              onClick={() => toggleGenre(genre.id)}
+              className={`genre-button ${selectedGenres.includes(genre.id) ? 'selected' : ''}`}
+            >
+              {genre.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      
+
+      {selectedGenres.length > 0 && (
+        <div className="selected-genres-box">
+          <h3>Selected Genres:</h3>
+          <ul>
+            {selectedGenres.map((genreId) => {
+              const genre = genres.find((g) => g.id === genreId);
+              return genre ? <li key={genre.id}>{genre.name}</li> : null;
+            })}
+          </ul>
+        </div>
+      )}
+    </div>
+
+    
+    <div className="main-content">
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="movies-list">
+          {movies.map((movie) => (
+            <div key={movie.id} className="movie-card" onClick={() => handleNavigateToDetail(movie.id)}
+>
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title || movie.name}
+              />
+              <div className="movie-info">
+                <h3>{movie.title || movie.name}</h3>
+                <p>{movie.overview && movie.overview.substring(0, 150)}...</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="pagination">
+        <button onClick={() => setPage(page - 1)} disabled={page <= 1}>
+          Previous
+        </button>
+        <span style={{marginTop: 9}}>Page {page}</span>
+        <button onClick={() => setPage(page + 1)}>Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  );
+};
+
+export default DiscoverMoviesPage;
