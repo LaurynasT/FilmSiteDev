@@ -54,14 +54,14 @@ const AiSearch = () => {
     }
   };
 
-  // Get recommendations based on text prompt
+  
   const handleTextRecommendations = async (e) => {
     e.preventDefault();
     if (!textPrompt.trim()) return;
     
     let mediaType = activeTab;
     if (mediaType === 'all') {
-      mediaType = null; // API expects null for all media types
+      mediaType = null; 
     }
 
     setLoading(true);
@@ -78,7 +78,7 @@ const AiSearch = () => {
     }
   };
 
-  // Handle click on a recommendation to navigate to details page
+  
   const handleRecommendationClick = (recommendation) => {
     if (!recommendation.id) {
       console.warn('No ID available for this recommendation');

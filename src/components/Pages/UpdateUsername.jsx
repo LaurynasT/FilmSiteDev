@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import { updateUsername } from "../Api/Api"; // Your API call function
+import { updateUsername } from "../Api/Api"; 
 
 const UpdateUsername = () => {
   const [newName, setNewName] = useState("");
-  const [error, setError] = useState(""); // State to hold error messages
-  const [successMessage, setSuccessMessage] = useState(""); // State to hold success message
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState(""); 
 
   const handleUpdateUsername = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await updateUsername(newName); // Call the API to update the username
-      setSuccessMessage("Username updated successfully!"); // Set success message
-      setError(""); // Clear any previous error
+      const response = await updateUsername(newName); 
+      setSuccessMessage("Username updated successfully!"); 
+      setError(""); 
     } catch (err) {
-      // If error occurs, log it and set error message
+     
       console.error("Error updating username:", err);
       setError(err.response?.data?.errors?.NewName || "Something went wrong!");
-      setSuccessMessage(""); // Clear success message if error occurs
+      setSuccessMessage(""); 
     }
   };
 

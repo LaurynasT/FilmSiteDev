@@ -5,7 +5,7 @@ import "../styles/ActorPage.css";
 
 const ActorPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // ✅ Hook for navigation
+  const navigate = useNavigate(); 
   const [actor, setActor] = useState(null);
   const [movieCredits, setMovieCredits] = useState([]);
   const [tvCredits, setTvCredits] = useState([]);
@@ -34,8 +34,8 @@ const ActorPage = () => {
   if (!actor) return <div className="actor-page">Loading actor data...</div>;
 
   const handleCardClick = (item) => {
-    const mediaType = item.title ? "MovieDetail" : "TvSeriesDetail"; // ✅ Determine media type
-    navigate(`/${mediaType}/${item.id}`); // ✅ Redirect to /movie/:id or /tv/:id
+    const mediaType = item.title ? "MovieDetail" : "TvSeriesDetail"; 
+    navigate(`/${mediaType}/${item.id}`); 
   };
 
   return (
@@ -84,8 +84,8 @@ const ActorPage = () => {
           <div
             key={item.id}
             className="movie-card"
-            onClick={() => handleCardClick(item)} // ✅ Clickable
-            style={{ cursor: "pointer" }} // 👈 Optional: show pointer on hover
+            onClick={() => handleCardClick(item)} 
+            style={{ cursor: "pointer" }} 
           >
             <img
               src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}

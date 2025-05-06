@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTrending } from '../Api/Api';  
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules'; // 👈 import modules
-import { useNavigate } from 'react-router-dom'; // For navigation
+import { Autoplay, EffectFade } from 'swiper/modules'; 
+import { useNavigate } from 'react-router-dom'; 
 import 'swiper/css';
-import 'swiper/css/effect-fade'; // 👈 Needed for fade effect to work properly
+import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
-import "../styles/Swiper.css";  // Make sure you have styles for this
+import "../styles/Swiper.css";  
 
 const TrendingSwiper = () => {
   const [trendingData, setTrendingData] = useState([]);
-  const [timeWindow, setTimeWindow] = useState('day'); // 'day' or 'week' for time window
+  const [timeWindow, setTimeWindow] = useState('day'); 
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const TrendingSwiper = () => {
   const loadTrendingData = async () => {
     setLoading(true);
     try {
-      const data = await fetchTrending(timeWindow);  // Pass timeWindow here
+      const data = await fetchTrending(timeWindow);  
       setTrendingData(data);
       setLoading(false);
     } catch (error) {
@@ -27,12 +27,12 @@ const TrendingSwiper = () => {
     }
   };
 
-  // Switch between 'day' and 'week' trends
+  
   const handleTimeWindowChange = (window) => {
     setTimeWindow(window);
   };
 
-  // Navigate to the appropriate detail page based on the media type
+ 
   const navigateToDetail = (item) => {
     if (item.media_type === 'movie') {
       navigate(`/MovieDetail/${item.id}`);
@@ -51,7 +51,7 @@ const TrendingSwiper = () => {
     <div>
         <h2>Trending</h2>
         
-        {/* Button Container for Day/Week Toggle */}
+       
         <div className="swipercategory">
           <div className="swipercategory-buttons">
             <button 
@@ -79,12 +79,12 @@ const TrendingSwiper = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{
-            delay: 3000, // 3 seconds between slides (you can adjust)
+            delay: 3000, 
             disableOnInteraction: false,
           }}
           effect="fade"
           fadeEffect={{ crossFade: true }}
-          modules={[Autoplay, EffectFade]} // 👈 required
+          modules={[Autoplay, EffectFade]}
         >
         
         
@@ -93,17 +93,17 @@ const TrendingSwiper = () => {
                 <div
                   className="spotlight-slide"
                   style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/w1280${item.poster_path})`, // Larger image
+                    backgroundImage: `url(https://image.tmdb.org/t/p/w1280${item.poster_path})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    height: '400px', // Adjust height for smaller section
+                    height: '400px',
                   }}
-                  onClick={() => navigateToDetail(item)} // Navigate to the detail page on click
+                  onClick={() => navigateToDetail(item)} 
                 >
-                  {/* Dark Overlay */}
+                 
                   <div className="overlay"></div>
 
-                  {/* Spotlight Content */}
+                  
                   <div className="spotlight-content">
                     <div className="spotlight-thumbnail">
                       <img
@@ -119,7 +119,7 @@ const TrendingSwiper = () => {
                       </div>
                       <div className="spotlight-description">
                         {item.overview && item.overview.length > 150
-                          ? `${item.overview.substring(0, 150)}...`  // Truncate the description
+                          ? `${item.overview.substring(0, 150)}...`  
                           : item.overview}
                       </div>
                     </div>

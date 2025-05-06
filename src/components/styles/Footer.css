@@ -1,6 +1,5 @@
-/* Footer Styles */
 .footer {
-  margin-top: auto; /* This pushes the footer to the bottom */
+  margin-top: auto; 
   background-color: #111;
   color: #ccc;
   padding: 40px 20px 20px;
@@ -63,7 +62,7 @@
   font-size: 13px;
 }
 
-/* Mobile Styles for Footer */
+
 @media screen and (max-width: 480px) {
   .footer {
     padding: 30px 15px 15px;

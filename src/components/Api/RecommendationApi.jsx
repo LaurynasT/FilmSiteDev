@@ -77,7 +77,7 @@ export const getRecommendationsFromText = async (prompt, mediaType) => {
   }
 };
 
-// Helper for generating media detail URLs
+
 export const getMediaDetailsUrl = (mediaId, mediaType) => {
   if (!mediaId) return null;
 

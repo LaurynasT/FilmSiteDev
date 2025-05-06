@@ -19,10 +19,10 @@ const About = () => {
                 />
 
                 <p>
-                    Easily filter your results by genre, release year, or sort by popularity and ratings. Whether you're in the mood for a trending blockbuster or a hidden gem, DiscoverFlix helps you find something great to watch.
+                    Easily filter your results by genre, release year, or sort by popularity and ratings. Whether you're in the mood for a trending blockbuster or a hidden gem.
                 </p>
                 <p>
-                    Built with ❤️ using <strong>React</strong>, this project demonstrates how to integrate external APIs, manage state with hooks, and create responsive UIs.
+                    Built with <strong>React</strong>, this project demonstrates how to integrate external APIs, manage state with hooks, and create responsive UIs.
                 </p>
             </div>
         </div>

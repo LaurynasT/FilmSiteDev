@@ -11,12 +11,12 @@ export const NavBar = () => {
 
   const handleLogout = async () => {
     try {
-      await logoutUser(); // Call API to invalidate server-side token
-      logout(); // Update auth context
-      navigate("/login"); // Redirect to login
+      await logoutUser(); 
+      logout(); 
+      navigate("/login"); 
     } catch (error) {
       console.error("Logout failed:", error);
-      navigate("/login"); // Redirect anyway on error
+      navigate("/login"); 
     }
   };
 

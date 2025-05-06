@@ -15,7 +15,7 @@ const DiscoverMoviesPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch genres when the page loads
+    
     const loadGenres = async () => {
       const genresData = await fetchGenres();
       setGenres(genresData);
@@ -24,13 +24,13 @@ const DiscoverMoviesPage = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch discover movies whenever filters change
+   
     const loadMovies = async () => {
       setLoading(true);
       const movieData = await fetchDiscoverMovie({
         page,
         sortBy,
-        genres: selectedGenres.join(','), // Pass multiple genres as a comma-separated string
+        genres: selectedGenres.join(','), 
         releaseYear,
       });
       setMovies(movieData);
@@ -39,12 +39,12 @@ const DiscoverMoviesPage = () => {
     loadMovies();
   }, [page, selectedGenres, releaseYear, sortBy]);
 
-  // Handle adding/removing genres
+  
   const toggleGenre = (genreId) => {
     setSelectedGenres((prevGenres) =>
       prevGenres.includes(genreId)
-        ? prevGenres.filter((id) => id !== genreId)  // Remove if already selected
-        : [...prevGenres, genreId]                   // Add if not selected
+        ? prevGenres.filter((id) => id !== genreId)  
+        : [...prevGenres, genreId]                   
     );
   };
   const handleNavigateToDetail = (id) => {

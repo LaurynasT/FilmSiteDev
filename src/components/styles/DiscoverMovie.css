@@ -1,4 +1,3 @@
-/* DiscoverMoviesPage.css */
 .discover-movies-page {
     padding: 20px;
     margin-top: 55px;
@@ -141,7 +140,7 @@
     padding: 8px;
     font-size: 16px;
   }
-  /* Style inputs and selects in the sidebar */
+  
 .sidebar input,
 .sidebar select {
   width: 100%;

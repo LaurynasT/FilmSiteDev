@@ -37,7 +37,7 @@ const Dashboard = () => {
         console.error(`Failed to fetch ${activeCollection}:`, err);
         setCollectionLoading(false);
         
-        // Handle unauthorized errors
+      
         if (err.response && (err.response.status === 401 || err.response.status === 403)) {
           navigate("/login");
         }

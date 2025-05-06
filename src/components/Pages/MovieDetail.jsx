@@ -9,7 +9,7 @@ import FavoriteButton from "../assets/FavoriteButton.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import WatchListButton from "../assets/WatchListButton.jsx";
-import { useAuth } from '../assets/AuthContext'; // Import the AuthContext hook
+import { useAuth } from '../assets/AuthContext'; 
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -23,7 +23,7 @@ const MovieDetail = () => {
     const scrollRef = useRef(null);
     const similarScrollRef = useRef(null);
     const navigate = useNavigate();
-    const { isAuthenticated } = useAuth(); // Use the auth context instead of checking localStorage
+    const { isAuthenticated } = useAuth();
 
     useEffect(() => {
         const loadMovieData = async () => {

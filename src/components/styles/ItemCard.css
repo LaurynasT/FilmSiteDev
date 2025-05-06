@@ -148,7 +148,7 @@
     }
   
     .flip-card {
-      width: 140px; /* smaller cards on mobile */
+      width: 140px;
       height: 210px;
       flex: 0 0 auto;
     }
@@ -160,16 +160,16 @@
   
     .flip-card-front, 
     .flip-card-back {
-      border-radius: 20px; /* slightly smaller roundness */
+      border-radius: 20px; 
     }
   
     .flip-card-back {
-      font-size: 10px; /* smaller text on back */
+      font-size: 10px; 
       padding: 5px;
     }
   
     .title {
-      max-width: 130px; /* fit the smaller cards */
+      max-width: 130px; 
       font-size: 12px;
       margin-top: 3px;
     }
